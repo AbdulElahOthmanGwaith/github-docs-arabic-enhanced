@@ -88,6 +88,7 @@ export const DefaultLayout = (props: Props) => {
         ) : null}
 
         {/* For Google and Bots */}
+        <meta name="google-site-verification" content="kDNYU4nEaGpwJC32XGWkj3pCP4K6HXdoMa6Nu37KouI" />
         <meta name="description" content={metaDescription} />
         {page.hidden && <meta name="robots" content="noindex" />}
         {Object.values(languages)
