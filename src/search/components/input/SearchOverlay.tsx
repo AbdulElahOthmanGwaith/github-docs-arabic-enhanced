@@ -36,7 +36,7 @@ import styles from './SearchOverlay.module.scss'
 
 type Props = {
   searchOverlayOpen: boolean
-  parentRef: RefObject<HTMLElement>
+  parentRef: React.RefObject<HTMLElement | null>
   debug: boolean
   onClose: () => void
   params: {
@@ -665,9 +665,9 @@ export function SearchOverlay({
       <div className={styles.overlayBackdrop} />
       <Overlay
         preventFocusOnOpen
-        initialFocusRef={inputRef}
-        returnFocusRef={parentRef}
-        ignoreClickRefs={[parentRef]}
+        initialFocusRef={inputRef as React.RefObject<HTMLElement>}
+        returnFocusRef={parentRef as React.RefObject<HTMLElement>}
+        ignoreClickRefs={[parentRef as React.RefObject<HTMLElement>]}
         onEscape={onClose}
         onClickOutside={onClose}
         anchorSide="inside-center"

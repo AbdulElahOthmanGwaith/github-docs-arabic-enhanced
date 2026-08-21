@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { JSX } from 'react'
+import type { JSX, RefObject } from 'react'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { Dialog, IconButton } from '@primer/react'
@@ -42,7 +42,7 @@ export const Header = () => {
   const isSearchResultsPage = router.route === '/search'
   const isEarlyAccessPage = currentProduct && currentProduct.id === 'early-access'
   const { width } = useInnerWindowWidth()
-  const returnFocusRef = useRef(null)
+  const returnFocusRef = useRef<HTMLButtonElement>(null)
   const searchButtonRef = useRef<HTMLButtonElement>(null)
   const { initializeCTA } = useCTAPopoverContext()
   const { isSearchOpen, setIsSearchOpen } = useSearchOverlayContext()
@@ -205,7 +205,7 @@ export const Header = () => {
                 />
                 {isSidebarOpen && (
                   <Dialog
-                    returnFocusRef={returnFocusRef}
+                    returnFocusRef={returnFocusRef as RefObject<HTMLElement>}
                     onClose={closeSidebar}
                     className={cx(styles.dialog, 'd-xxl-none')}
                     position="left"
